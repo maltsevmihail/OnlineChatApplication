@@ -1,19 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iBCtew5sc7U=",
+  "dgSpecHash": "aCRs3eWg834=",
   "success": true,
   "projectFilePath": "C:\\Users\\михаил\\Documents\\sharp projects\\OnlineChat\\OnlineChat.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\михаил\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\10.0.2\\microsoft.aspnetcore.connections.abstractions.10.0.2.nupkg.sha512",
-    "C:\\Users\\михаил\\.nuget\\packages\\microsoft.aspnetcore.signalr.common\\10.0.2\\microsoft.aspnetcore.signalr.common.10.0.2.nupkg.sha512",
-    "C:\\Users\\михаил\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\10.0.2\\microsoft.bcl.asyncinterfaces.10.0.2.nupkg.sha512",
-    "C:\\Users\\михаил\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.2\\microsoft.extensions.dependencyinjection.abstractions.10.0.2.nupkg.sha512",
-    "C:\\Users\\михаил\\.nuget\\packages\\microsoft.extensions.features\\10.0.2\\microsoft.extensions.features.10.0.2.nupkg.sha512",
-    "C:\\Users\\михаил\\.nuget\\packages\\microsoft.extensions.options\\10.0.2\\microsoft.extensions.options.10.0.2.nupkg.sha512",
-    "C:\\Users\\михаил\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.2\\microsoft.extensions.primitives.10.0.2.nupkg.sha512",
-    "C:\\Users\\михаил\\.nuget\\packages\\system.io.pipelines\\10.0.2\\system.io.pipelines.10.0.2.nupkg.sha512",
-    "C:\\Users\\михаил\\.nuget\\packages\\system.text.encodings.web\\10.0.2\\system.text.encodings.web.10.0.2.nupkg.sha512",
-    "C:\\Users\\михаил\\.nuget\\packages\\system.text.json\\10.0.2\\system.text.json.10.0.2.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

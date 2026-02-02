@@ -13,10 +13,13 @@ namespace OnlineChat.Hubs
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, chatName);
         }
-
         public async Task SendMessage(string chatName, string user, string message)
         {
-            await Clients.Group(chatName).SendAsync("RecieveMessage", $"User {user} says: {message}.");
+            await Clients.Group(chatName).SendAsync("ReceiveMessage", $"User {user} says: {message}.");
+        }
+        public async Task SendMessageToAll(string user, string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
     }
 }
