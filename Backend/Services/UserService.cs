@@ -23,7 +23,22 @@ namespace Backend.Services
 
             var user = User.Create(Guid.NewGuid(), login, hashedPassword);
 
-            _userRepository.Add(user);
+            await _userRepository.Add(user);
+        }
+        public async Task<string> Login(string login, string password)
+        {
+            var user =  await _userRepository.GetByLogin(login);
+
+            if (user is null)
+                throw new Exception("User not found.");
+            
+            var reuslt = _passwordHasher.Verify(password, user.PasswordHash);
+            if (!reuslt)
+                throw new Exception("Wrong password");
+
+            
+
+            return "";
         }
     }
 }

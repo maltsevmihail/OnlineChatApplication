@@ -20,5 +20,11 @@ namespace Backend.Repository
 
             return;
         }
+        public async Task<User> GetByLogin(string login)
+        {
+            User? user = await _users.FirstOrDefaultAsync(x => x.Login == login);
+
+            return user;
+        }
     }
 }
