@@ -1,3 +1,6 @@
+using Backend.Endpoints;
+using Backend.Repository;
+using Microsoft.EntityFrameworkCore;
 using OnlineChat.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +22,12 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddDbContext<UserRepository>(options =>
+{
+   options.UseMySql(builder.Configuration.GetConnectionString("MySQL"), 
+                    new MySqlServerVersion(new Version(8, 0, 40)));
+});
+
 builder.Services.AddSignalR();
 
 var app = builder.Build();
@@ -26,5 +35,7 @@ var app = builder.Build();
 app.UseCors();
 
 app.MapHub<ChatHub>("/chatHub");
+
+app.MapUserEndpoints();
 
 app.Run();

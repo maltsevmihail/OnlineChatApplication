@@ -13,7 +13,6 @@ namespace OnlineChat.Hubs
     public interface IChatInterface
     {
         public Task RecieveMessage(string user, string message);
-
     }
     public class ChatHub : Hub<IChatInterface>
     {
