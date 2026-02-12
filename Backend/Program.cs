@@ -1,4 +1,5 @@
 using Backend.Endpoints;
+using Backend.Extensions;
 using Backend.Infrastructure;
 using Backend.Repository;
 using Backend.Services;
@@ -38,6 +39,8 @@ builder.Services.AddSignalR();
 
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(nameof(JwtOptions)));
 
+builder.Services.AddApiExtensions(builder.Configuration);
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddScoped<UserService>();
@@ -54,9 +57,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseCors();
 
-app.MapHub<ChatHub>("/chatHub");
+app.MapHub<ChatHub>("/chatHub").RequireAuthorization();
 
 app.MapUserEndpoints();
 
