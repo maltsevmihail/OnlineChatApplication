@@ -12,10 +12,15 @@ namespace Backend.Services
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly IUserRepository _userRepository;
-        public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher)
+        private readonly IJwtProvider _jwtProvider;
+        public UserService(
+            IJwtProvider jwtProvider,
+            IUserRepository userRepository, 
+            IPasswordHasher passwordHasher)
         {
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
+            _jwtProvider = jwtProvider;
         }
         public async Task Register(string login, string password)
         {
@@ -36,9 +41,9 @@ namespace Backend.Services
             if (!reuslt)
                 throw new Exception("Wrong password");
 
-            
+            var token = _jwtProvider.GenerateToken(user);
 
-            return "";
+            return token;
         }
     }
 }

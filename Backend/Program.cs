@@ -1,9 +1,15 @@
 using Backend.Endpoints;
+using Backend.Infrastructure;
 using Backend.Repository;
+using Backend.Services;
 using Microsoft.EntityFrameworkCore;
 using OnlineChat.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddStackExchangeRedisCache(options =>
 {
@@ -30,7 +36,23 @@ builder.Services.AddDbContext<UserRepository>(options =>
 
 builder.Services.AddSignalR();
 
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(nameof(JwtOptions)));
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+builder.Services.AddScoped<UserService>();
+
+builder.Services.AddScoped<IJwtProvider, JwtProvider>();
+
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseCors();
 

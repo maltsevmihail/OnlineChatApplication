@@ -25,9 +25,9 @@ namespace Backend.Endpoints
         }
         public static async Task<IResult> Login(UserRequest request , UserService userService)
         {
-            var token = userService.Login(request.login, request.password);
+            var token = await userService.Login(request.login, request.password);
 
-            return null;
+            return Results.Ok(token);
         }
     }
 }
